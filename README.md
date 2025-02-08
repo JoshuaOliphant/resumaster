@@ -9,7 +9,7 @@ Resumaster is an intelligent web application that leverages Anthropic's Claude A
 - 📄 Resume Upload: Easily upload your existing resume
 - 📋 Job Description Input: Provide the job description you're targeting
 - 🔍 AI-Powered Customization: Intelligent resume tailoring using Claude AI
-- 🌟 Optional Enhancements: 
+- 🌟 Optional Enhancements:
   - GitHub Profile Inclusion
   - Personal Writeup Inclusion
 
@@ -36,14 +36,43 @@ Resumaster is an intelligent web application that leverages Anthropic's Claude A
 
 - **Backend**: FastAPI
 - **AI Service**: Anthropic Claude (Claude-3-5-Sonnet)
-- **Logging**: Logfire
+- **Logging**: Logfire (Observability Platform)
 - **Environment**: Python 3.11+
+
+### About Logfire
+
+Logfire is an advanced observability platform built by the Pydantic team. Key features include:
+- Built on OpenTelemetry
+- Easy-to-use instrumentation
+- Detailed performance analytics
+- Comprehensive application monitoring
+
+### Setting Up Logfire
+
+To enable logging and observability using Logfire, follow these steps:
+
+1. **Create a Logfire Account**
+   - Visit [Logfire's official website](https://logfire.pydantic.dev/)
+   - Sign up for an account
+   - Create a new project
+   - Obtain your **write token** from the Logfire dashboard
+
+2. **Configure Logfire in Resumaster**
+   - Add your write token to the `.env` file:
+     ```plaintext
+     LOGFIRE_WRITE_TOKEN=your_write_token_here
+     ```
+   - Ensure Logfire is properly initialized in the application
+
+3. **Verify Logging**
+   - Run the application and check Logfire’s dashboard to monitor logs and analytics
 
 ## Prerequisites
 
 - Python 3.11+
 - Anthropic API Key
 - Astral's `uv` (Universal Python Package Manager)
+- Logfire account (for logging, optional but recommended)
 
 ## Installation
 
@@ -100,3 +129,4 @@ Contributions are welcome! Please read the contributing guidelines before gettin
 ## Disclaimer
 
 Resumaster is an AI-assisted tool. Always review and validate the generated resume to ensure accuracy and personal representation.
+

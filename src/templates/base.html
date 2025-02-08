@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Customizer</title>
+    
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    typography: {
+                        DEFAULT: {
+                            css: {
+                                maxWidth: 'none',
+                            },
+                        },
+                    },
+                },
+            },
+            plugins: [
+                require('@tailwindcss/typography'),
+            ],
+        }
+    </script>
+    
+    <style>
+        .citation-highlight {
+            background-color: rgba(250, 204, 21, 0.2);
+            border-bottom: 1px dashed rgba(250, 204, 21, 0.5);
+            cursor: help;
+            transition: background-color 0.2s;
+        }
+        .citation-highlight:hover {
+            background-color: rgba(250, 204, 21, 0.4);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    {% block content %}{% endblock %}
+</body>
+</html>

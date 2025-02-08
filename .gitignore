@@ -1,0 +1,20 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Personal test docs
+writeup.md
+design.md
+github_profile.md
+existing_resume.md
+test_job_description.md
+
+# Environment variables
+.env

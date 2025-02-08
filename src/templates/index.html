@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-4xl">
+    <h1 class="text-3xl font-bold mb-8">Resume Customizer</h1>
+    
+    <!-- Upload Form -->
+    <div class="mb-8 p-6 bg-white rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">Upload Your Resume</h2>
+        <form hx-post="/upload" 
+              hx-encoding="multipart/form-data"
+              hx-target="#results"
+              hx-indicator="#loading"
+              class="space-y-6">
+            
+            <!-- Resume Upload -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Resume (MD only)</label>
+                <input type="file" 
+                       id="resume_file" 
+                       name="resume_file" 
+                       accept=".md" 
+                       required
+                       class="mt-1 block w-full text-sm text-gray-500
+                              file:mr-4 file:py-2 file:px-4
+                              file:rounded-full file:border-0
+                              file:text-sm file:font-semibold
+                              file:bg-blue-50 file:text-blue-700
+                              hover:file:bg-blue-100">
+                <p class="mt-1 text-sm text-gray-500">Upload your resume in markdown (.md) format</p>
+            </div>
+            
+            <!-- Job Description -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Job Description (MD, TXT)</label>
+                <input type="file" 
+                       id="job_description_file" 
+                       name="job_description_file" 
+                       accept=".md,.txt"
+                       required
+                       class="mt-1 block w-full text-sm text-gray-500
+                              file:mr-4 file:py-2 file:px-4
+                              file:rounded-full file:border-0
+                              file:text-sm file:font-semibold
+                              file:bg-blue-50 file:text-blue-700
+                              hover:file:bg-blue-100">
+                <p class="mt-1 text-sm text-gray-500">Upload the job description in markdown or text format</p>
+            </div>
+            
+            <!-- GitHub Profile -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">GitHub Profile (MD, TXT, Optional)</label>
+                <input type="file" 
+                       id="github_file" 
+                       name="github_file" 
+                       accept=".md,.txt"
+                       class="mt-1 block w-full text-sm text-gray-500
+                              file:mr-4 file:py-2 file:px-4
+                              file:rounded-full file:border-0
+                              file:text-sm file:font-semibold
+                              file:bg-blue-50 file:text-blue-700
+                              hover:file:bg-blue-100">
+                <p class="mt-1 text-sm text-gray-500">Upload your GitHub profile information</p>
+            </div>
+            
+            <!-- Personal Writeup -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Personal Writeup (MD, TXT, Optional)</label>
+                <input type="file" 
+                       id="personal_file" 
+                       name="personal_file" 
+                       accept=".md,.txt"
+                       class="mt-1 block w-full text-sm text-gray-500
+                              file:mr-4 file:py-2 file:px-4
+                              file:rounded-full file:border-0
+                              file:text-sm file:font-semibold
+                              file:bg-blue-50 file:text-blue-700
+                              hover:file:bg-blue-100">
+                <p class="mt-1 text-sm text-gray-500">Upload any additional context about your experience</p>
+            </div>
+            
+            <!-- Submit Button -->
+            <div class="flex items-center space-x-4">
+                <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md
+                               font-medium transition-colors duration-200">
+                    Customize Resume
+                </button>
+                <div id="loading" class="htmx-indicator">
+                    <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Error Messages -->
+    <div id="error-message" 
+         class="hidden mb-8 bg-red-50 border-l-4 border-red-400 p-4"
+         _="on htmx:responseError remove .hidden">
+        <div class="flex">
+            <div class="ml-3">
+                <p class="text-sm text-red-700">
+                    Failed to upload file. Please try again.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="results" class="space-y-6"></div>
+</div>
+{% endblock %}
